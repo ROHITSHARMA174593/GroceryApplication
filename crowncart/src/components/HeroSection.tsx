@@ -8,9 +8,18 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 
 const HeroSection = () => {
-
-    // const user = useSelector((state:RootState) => state.user);
+        // const user = useSelector((state:RootState) => state.user);
     //todo : Now we can access the data anywhere in this application using redux-toolkit || it make easy development when u want to store data in current time
+
+
+    // //todo: SocketIO Implementation
+    // useEffect(() => {
+    //     if(userData){
+    //         let socket = getSocket()
+    //         socket.emit("identity", userData?._id)
+    //     }
+    // },[userData])
+
 
     const slides = [
         {

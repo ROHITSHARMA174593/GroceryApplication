@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import AdminDashboard from "@/components/AdminDashboard";
 import DeliveryBoy from "@/components/DeliveryBoy";
 import EditRoleMobile from "@/components/EditRoleMobile";
+import GeoUpdater from "@/components/GeoUpdater";
 import Navbar from "@/components/Navbar";
 import UserDashboard from "@/components/UserDashboard";
 import dbConnect from "@/lib/db";
@@ -19,14 +20,15 @@ export default async function HomePage() {
   if(inComplete){
     return <EditRoleMobile />
   }
-   const serializedUser = JSON.parse(JSON.stringify(user));
+   const plainUser = JSON.parse(JSON.stringify(user));
 
    return (
     <div>
-       <Navbar user={serializedUser}/>
+       <Navbar user={plainUser}/>
+       <GeoUpdater userId={plainUser._id} /> 
        {
         user.role == "admin" ? <AdminDashboard /> : user.role == "user" ? <UserDashboard /> : <DeliveryBoy />
        }
-    </div>
+    </div> 
   );
 }

@@ -20,12 +20,13 @@ interface IUser {
   image?: string;
 }
 
-const Navbar = () => {
+const Navbar = ({ user: propUser }: { user?: any }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isAddGroceryOpen, setIsAddGroceryOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const cardData = useSelector((state:RootState)=>state.cart.cartData);
-  const user = useSelector((state:RootState) => state.user.userData);
+  const reduxUser = useSelector((state:RootState) => state.user.userData);
+  const user = propUser || reduxUser;
 
   return (
     <>
